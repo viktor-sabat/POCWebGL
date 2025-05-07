@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://covd8ppvx1q4i"]
+
+[ext_resource type="PackedScene" uid="uid://cxixorrwqiu5o" path="res://models/cyclorama/cyclorama.glb" id="1_p5vij"]
+
+[node name="Cyclorama" type="Node3D"]
+
+[node name="cyclorama" parent="." instance=ExtResource("1_p5vij")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.2, 0, 0.9)

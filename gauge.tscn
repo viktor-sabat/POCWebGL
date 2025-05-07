@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cauavmef4j5ww"]
+
+[ext_resource type="PackedScene" uid="uid://d3rtoxndnkteb" path="res://models/gauge/gauge.glb" id="1_e6s24"]
+
+[node name="Gauge" type="Node3D"]
+
+[node name="gauge" parent="." instance=ExtResource("1_e6s24")]

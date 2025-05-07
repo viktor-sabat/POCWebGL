@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cihl4sjpt2uum"]
+
+[ext_resource type="Texture2D" uid="uid://i4w2w2j6eu18" path="res://models/gauge/gauge_Speedometer.png" id="1_yrbwr"]
+
+[resource]
+resource_name = "Speedometer"
+cull_mode = 2
+albedo_texture = ExtResource("1_yrbwr")
+roughness = 0.5
+emission_enabled = true
+emission_texture = ExtResource("1_yrbwr")
+texture_filter = 2
