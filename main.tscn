@@ -1,9 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs8axh0w5ak8y"]
+[gd_scene load_steps=17 format=3 uid="uid://cs8axh0w5ak8y"]
 
 [ext_resource type="Material" uid="uid://cjvbrquhc3adf" path="res://models/cyclorama/M_Cyclorama.tres" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://jaq5ixnryt7h" path="res://web_socket_handler.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cauavmef4j5ww" path="res://gauge.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://covd8ppvx1q4i" path="res://cyclorama.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://di2xt60xrm8cf" path="res://models/gauge/gauge_ui/ticks.svg" id="5_5vw27"]
+[ext_resource type="Script" uid="uid://d3g7atrrr5bd1" path="res://rpm_gauge_ui.gd" id="5_kek77"]
+[ext_resource type="Texture2D" uid="uid://dft4nrhbanr7w" path="res://models/gauge/gauge_ui/ticks labels.svg" id="6_kek77"]
+[ext_resource type="Texture2D" uid="uid://dbamsv5f5fqrt" path="res://models/gauge/gauge_ui/left needle.svg" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://c0yybhm21sure" path="res://models/gauge/gauge_ui/right needle.svg" id="8_efxa6"]
+[ext_resource type="Texture2D" uid="uid://diyydo2pnwksy" path="res://models/gauge/gauge_ui/left slider.svg" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://cg62k0qrhn4v6" path="res://models/gauge/gauge_ui/right slider.svg" id="11_efxa6"]
 
 [sub_resource type="GDScript" id="GDScript_1bvp3"]
 
@@ -23,6 +30,9 @@ tonemap_exposure = 1.4
 tonemap_white = 6.0
 ssao_enabled = true
 glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kek77"]
+viewport_path = NodePath("GaugeDisplayViewport")
 
 [node name="Main" type="Node3D"]
 script = SubResource("GDScript_1bvp3")
@@ -125,3 +135,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 15.4, 15)
 
 [node name="Gauge" parent="." instance=ExtResource("3_1bvp3")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 2.9, 16.5, 1.8)
+
+[node name="GaugeDisplayScreen" type="Sprite3D" parent="Gauge"]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, -3.434, 0.08, -0.013)
+texture = SubResource("ViewportTexture_kek77")
+
+[node name="GaugeDisplayViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1200, 1200)
+
+[node name="RpmGaugeUI" type="Control" parent="GaugeDisplayViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_kek77")
+
+[node name="Ticks" type="TextureRect" parent="GaugeDisplayViewport/RpmGaugeUI"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 1200.0
+texture = ExtResource("5_5vw27")
+expand_mode = 1
+
+[node name="Labels" type="TextureRect" parent="GaugeDisplayViewport/RpmGaugeUI"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 1200.0
+texture = ExtResource("6_kek77")
+expand_mode = 1
+
+[node name="EngineNeedle" type="TextureRect" parent="GaugeDisplayViewport/RpmGaugeUI"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 1200.0
+pivot_offset = Vector2(600, 600)
+texture = ExtResource("7_4c57u")
+expand_mode = 1
+
+[node name="ElectromotorNeedle" type="TextureRect" parent="GaugeDisplayViewport/RpmGaugeUI"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 1200.0
+pivot_offset = Vector2(600, 600)
+texture = ExtResource("8_efxa6")
+expand_mode = 1
+
+[node name="EngineRadialSlider" type="TextureProgressBar" parent="GaugeDisplayViewport/RpmGaugeUI"]
+custom_minimum_size = Vector2(1200, 1200)
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 1200.0
+max_value = 8000.0
+fill_mode = 4
+radial_initial_angle = 207.3
+radial_fill_degrees = 114.1
+nine_patch_stretch = true
+texture_progress = ExtResource("10_efxa6")
+tint_progress = Color(0.576229, 0.127759, 0.164638, 1)
+
+[node name="ElectromotorRadialSlider" type="TextureProgressBar" parent="GaugeDisplayViewport/RpmGaugeUI"]
+custom_minimum_size = Vector2(1200, 1200)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 10000.0
+fill_mode = 5
+radial_initial_angle = 151.4
+radial_fill_degrees = 143.1
+nine_patch_stretch = true
+texture_progress = ExtResource("11_efxa6")
+tint_progress = Color(3.03224e-06, 0.423726, 0.585879, 1)
