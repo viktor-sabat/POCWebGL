@@ -6,8 +6,6 @@ This project showcases a 3D scene built in **Godot Engine**, featuring **WebSock
 
 ![Godot Engine](https://img.shields.io/badge/Godot-4.4-blue)
 ![Blender](https://img.shields.io/badge/Blender-4.4-orange)
-![WebSocket](https://img.shields.io/badge/WebSocket-GDScript%20Based-purple)
-![HTML5 Export](https://img.shields.io/badge/Export-WebGL-green)
 
 ## Features
 
@@ -20,13 +18,14 @@ This project showcases a 3D scene built in **Godot Engine**, featuring **WebSock
 
 ```bash
 git clone git@mbst.net.plm.eds.com:BOILERPLATE/godot.git
-cd your-godot-project
+cd godot/
 ```
 
 ### Open in Godot
 
 1. Launch Godot Engine (version 4.4+)
 2. Click **Import**, then select the `project.godot` file inside the cloned folder
+![alt text](<README_assets/Screenshot 2025-05-13 143018.png>)
 3. Open the main scene (e.g., `main.tscn`)
 4. Press `F5` or click **Play** to run the scene and ensure everything works as expected
 
@@ -41,6 +40,7 @@ If you want to run the exported WebGL build locally, follow these steps:
 ```bash
 npx local-web-server --https --cors.embedder-policy "required-corp" --cors.opener-policy "same-origin" --directory "."
 ```
+![alt text](<README_assets/Screenshot 2025-05-13 143752.png>)
 
 4. Open your browser and go to:
 
@@ -63,15 +63,7 @@ WebSocket communication is handled in a global singleton (`WebSocketHandler.gd`)
 # WebSocketHandler.gd
 extends Node
 
-var client := WebSocketClient.new()
-
-func _ready():
-    client.connect_to_url("ws://localhost:8080")
-    client.connect("data_received", self, "_on_data_received")
-
-func _on_data_received():
-    var message = client.get_peer(1).get_packet().get_string_from_utf8()
-    # Handle incoming RPM data
+...
 ```
 
 ## Reference
