@@ -34,6 +34,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"Gauge Glass": {
+"use_external/enabled": true,
+"use_external/path": "uid://y51a8d0irtte"
+},
 "Gauge_Frame": {
 "use_external/enabled": true,
 "use_external/path": "res://models/gauge/Gauge_Frame.tres"

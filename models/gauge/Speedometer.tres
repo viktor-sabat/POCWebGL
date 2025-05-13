@@ -5,7 +5,6 @@
 [resource]
 resource_name = "Speedometer"
 cull_mode = 2
-albedo_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 roughness = 0.5
 emission_enabled = true
 emission_texture = ExtResource("1_yrbwr")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cs8axh0w5ak8y"]
+[gd_scene load_steps=20 format=3 uid="uid://cs8axh0w5ak8y"]
 
 [ext_resource type="Material" uid="uid://cjvbrquhc3adf" path="res://models/cyclorama/M_Cyclorama.tres" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://jaq5ixnryt7h" path="res://web_socket_handler.gd" id="2_lquwl"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c0yybhm21sure" path="res://models/gauge/gauge_ui/right needle.svg" id="8_efxa6"]
 [ext_resource type="Texture2D" uid="uid://diyydo2pnwksy" path="res://models/gauge/gauge_ui/left slider.svg" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://cg62k0qrhn4v6" path="res://models/gauge/gauge_ui/right slider.svg" id="11_efxa6"]
+[ext_resource type="Material" uid="uid://y51a8d0irtte" path="res://models/gauge/GaugeGlass.tres" id="12_dg77c"]
+[ext_resource type="Material" uid="uid://d0vk0bv30yp3n" path="res://models/gauge/GaugeScreen.tres" id="12_ycdy4"]
 
 [sub_resource type="GDScript" id="GDScript_1bvp3"]
 
@@ -34,6 +36,8 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_kek77"]
 viewport_path = NodePath("GaugeDisplayViewport")
 
+[sub_resource type="SphereMesh" id="SphereMesh_efxa6"]
+
 [node name="Main" type="Node3D"]
 script = SubResource("GDScript_1bvp3")
 
@@ -46,31 +50,31 @@ environment = SubResource("Environment_0xm2m")
 [node name="Studio" type="Node3D" parent="."]
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Studio"]
-transform = Transform3D(1.4, 0, 0, 0, -4.37114e-08, -0.92, 0, 1, -4.02145e-08, 0, 26.1, 90.9)
+transform = Transform3D(1.4, 0, 0, 0, -4.37114e-08, -1.4076, 0, 1, -6.15282e-08, 0, 31.39, 90.9)
 use_collision = true
-size = Vector3(74.6, 1, 83.1)
+size = Vector3(74.6, 1, 94.6)
 material = ExtResource("2_1bvp3")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Studio"]
-transform = Transform3D(1.4, 0, 0, 0, -4.37114e-08, -0.92, 0, 1, -4.02145e-08, 0, 26.1, -87)
+transform = Transform3D(1.4, 0, 0, 0, -4.37114e-08, -1.288, 0, 1, -5.63003e-08, 0, 32.126, -87)
 use_collision = true
-size = Vector3(74.6, 1, 83.1)
+size = Vector3(74.6, 1, 96.2)
 material = ExtResource("2_1bvp3")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Studio"]
-transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 2.3, 0, 57.6, 0)
+transform = Transform3D(1.4, 0, 0, 0, -1, 2.01072e-07, 0, -8.74228e-08, -2.3, 0, 94.1, 1.73097e-06)
 use_collision = true
 size = Vector3(74.6, 1, 83.1)
 material = ExtResource("2_1bvp3")
 
 [node name="Cyclorama" parent="Studio" instance=ExtResource("3_h2yge")]
-transform = Transform3D(2.8912, 0, 0, 0, 3.556, 0, 0, 0, 5.89824, 2.4, 1.9, 0.3)
+transform = Transform3D(2.8912, 0, 0, 0, 6.00964, 0, 0, 0, 5.89824, 2.4, 1.9, 0.3)
 
 [node name="Lighting" type="Node3D" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 34.2049, 9.4, 12.5661)
-light_energy = 16.0
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 33.8629, 9.4, 11.6264)
+light_energy = 19.17
 light_size = 0.207
 light_specular = 4.864
 shadow_enabled = true
@@ -79,8 +83,8 @@ spot_range = 34.3
 spot_angle = 46.6556
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -29.7951, 9.4, 12.5661)
-light_energy = 16.0
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -28.256, 9.4, 8.33748)
+light_energy = 19.17
 light_size = 0.207
 light_specular = 4.864
 shadow_enabled = true
@@ -90,51 +94,51 @@ spot_angle = 46.6556
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.4, 55.8, -48.4)
-light_energy = 2.131
+light_energy = 1.2
 shadow_enabled = true
 spot_range = 103.3
 spot_angle = 89.99
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21.1, 55.8, -48.4)
-light_energy = 2.131
+light_energy = 1.2
 shadow_enabled = true
 spot_range = 103.3
 spot_angle = 89.99
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.4, 55.8, 0.899998)
-light_energy = 2.131
+light_energy = 1.2
 shadow_enabled = true
 spot_range = 103.3
 spot_angle = 89.99
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21.1, 55.8, 0.899998)
-light_energy = 2.131
+light_energy = 1.2
 shadow_enabled = true
 spot_range = 103.3
 spot_angle = 89.99
 
 [node name="SpotLight3D8" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.4, 55.8, 50.1)
-light_energy = 2.131
+light_energy = 1.2
 shadow_enabled = true
 spot_range = 103.3
 spot_angle = 89.99
 
 [node name="SpotLight3D9" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21.1, 55.8, 50.1)
-light_energy = 2.131
+light_energy = 1.2
 shadow_enabled = true
 spot_range = 103.3
 spot_angle = 89.99
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 15.4, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 16.5, 1.1)
 
 [node name="Gauge" parent="." instance=ExtResource("3_1bvp3")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 2.9, 16.5, 1.8)
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 2.7, 16.5, -12.4)
 
 [node name="GaugeDisplayScreen" type="Sprite3D" parent="Gauge"]
 transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, -3.434, 0.08, -0.013)
@@ -207,3 +211,41 @@ radial_fill_degrees = 143.1
 nine_patch_stretch = true
 texture_progress = ExtResource("11_efxa6")
 tint_progress = Color(3.03224e-06, 0.423726, 0.585879, 1)
+
+[node name="RpmLabel" type="RichTextLabel" parent="GaugeDisplayViewport/RpmGaugeUI"]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 481.0
+offset_right = 784.0
+offset_bottom = 618.0
+theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/bold_font_size = 100
+bbcode_enabled = true
+text = "RPM "
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimesThousandLabel" type="RichTextLabel" parent="GaugeDisplayViewport/RpmGaugeUI"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 552.0
+offset_right = 770.0
+offset_bottom = 689.0
+theme_override_font_sizes/normal_font_size = 65
+theme_override_font_sizes/bold_font_size = 100
+bbcode_enabled = true
+text = "x1000"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GaugeBgLightBlocker" type="MeshInstance3D" parent="."]
+transform = Transform3D(23, 0, 0, 0, 23, 0, 0, 0, 1, 2.9, 16.5, -20)
+mesh = SubResource("SphereMesh_efxa6")
+surface_material_override/0 = ExtResource("12_ycdy4")
+
+[node name="GlassSphereTesting" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 37, 16, 3)
+mesh = SubResource("SphereMesh_efxa6")
+surface_material_override/0 = ExtResource("12_dg77c")
