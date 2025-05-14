@@ -23,7 +23,7 @@ var current_engine_rpm = 0.0
 var current_electro_rpm = 0.0
 
 func _ready():
-	# Connect RPM signal from WebSocket handler
+	# Connect to RPM signal from WebSocket handler
 	var websocket_handler = get_node("/root/Main/WebSocketHandler")
 	if websocket_handler:
 		websocket_handler.rpm_received.connect(_on_rpm_received)
